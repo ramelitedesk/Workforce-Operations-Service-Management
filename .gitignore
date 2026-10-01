@@ -8,3 +8,5 @@ media/
 staticfiles/
 .idea/
 .vscode/
+celerybeat-schedule
+celerybeat-schedule-*
