@@ -187,6 +187,8 @@ Work orders form the core operational workflow of the platform, connecting custo
 
 ## Automated Tests
 
+<img width="1906" height="989" alt="image" src="https://github.com/user-attachments/assets/f7841c28-c829-4eda-8a65-303ad0cbe469" />
+
 The API test suite verifies authentication, permissions, company-level data isolation, and WorkOrder API behavior.
 
 ```text
@@ -195,4 +197,4 @@ Found 20 test(s).
 Ran 20 tests
 OK
 
-<img width="1906" height="989" alt="image" src="https://github.com/user-attachments/assets/f7841c28-c829-4eda-8a65-303ad0cbe469" />
+
