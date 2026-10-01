@@ -1,0 +1,425 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}
+    Reports Dashboard
+{% endblock %}
+
+
+{% block content %}
+
+<div id="content-main">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="module">
+
+        <h1>
+            Reports Dashboard
+        </h1>
+
+        <p>
+            Operational performance and business insights
+        </p>
+
+        {% if company %}
+
+            <p>
+                <strong>Company:</strong>
+                {{ company.name }}
+            </p>
+
+        {% else %}
+
+            <p>
+                <strong>Company:</strong>
+                No company assigned
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- =====================================================
+         KEY PERFORMANCE INDICATORS
+    ====================================================== -->
+
+    <div class="module">
+
+        <h2>
+            Key Performance Indicators
+        </h2>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+                    <th>Total Customers</th>
+
+                    <td>
+                        {{ summary.total_customers }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Open Tickets</th>
+
+                    <td>
+                        {{ summary.open_tickets }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Closed Tickets</th>
+
+                    <td>
+                        {{ summary.closed_tickets }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Total Work Orders</th>
+
+                    <td>
+                        {{ summary.total_work_orders }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Active Work Orders</th>
+
+                    <td>
+                        {{ summary.active_work_orders }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Completed Work Orders</th>
+
+                    <td>
+                        {{ summary.completed_work_orders }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Work Order Completion Rate</th>
+
+                    <td>
+                        {{ summary.completion_rate }}%
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Active Employees</th>
+
+                    <td>
+                        {{ summary.active_employees }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Attendance Today</th>
+
+                    <td>
+                        {{ summary.attendance_today }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Pending Invoices</th>
+
+                    <td>
+                        {{ summary.pending_invoices }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Overdue Invoices</th>
+
+                    <td>
+                        {{ summary.overdue_invoices }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Total Outstanding</th>
+
+                    <td>
+                        ₹{{ summary.total_outstanding }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Low Stock Products</th>
+
+                    <td>
+                        {{ summary.low_stock_products }}
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>Unread Notifications</th>
+
+                    <td>
+                        {{ summary.unread_notifications }}
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- =====================================================
+         WORK ORDER REPORT
+    ====================================================== -->
+
+    <div class="module">
+
+        <h2>
+            Work Order Report
+        </h2>
+
+
+        {% if work_order_chart.labels %}
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Status</th>
+                        <th>Work Orders</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for label in work_order_chart.labels %}
+
+                        <tr>
+
+                            <th>
+                                {{ label }}
+                            </th>
+
+                            <td>
+                                {{ work_order_chart.values|slice:forloop.counter0 }}
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        {% else %}
+
+            <p>
+                No work order data available.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- =====================================================
+         TICKET REPORT
+    ====================================================== -->
+
+    <div class="module">
+
+        <h2>
+            Ticket Report
+        </h2>
+
+
+        {% if ticket_chart.labels %}
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Status</th>
+                        <th>Tickets</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for label in ticket_chart.labels %}
+
+                        <tr>
+
+                            <th>
+                                {{ label }}
+                            </th>
+
+                            <td>
+                                {{ ticket_chart.values|slice:forloop.counter0 }}
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        {% else %}
+
+            <p>
+                No ticket data available.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- =====================================================
+         RECENT WORK ORDERS
+    ====================================================== -->
+
+    <div class="module">
+
+        <h2>
+            Recent Work Orders
+        </h2>
+
+
+        {% if recent_work_orders %}
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Work Order
+                        </th>
+
+                        <th>
+                            Customer
+                        </th>
+
+                        <th>
+                            Assigned Employee
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Created
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for work_order in recent_work_orders %}
+
+                        <tr>
+
+                            <td>
+                                {{ work_order.work_order_number }}
+                            </td>
+
+
+                            <td>
+
+                                {% if work_order.customer %}
+                                    {{ work_order.customer }}
+                                {% else %}
+                                    —
+                                {% endif %}
+
+                            </td>
+
+
+                            <td>
+
+                                {% if work_order.assigned_employee %}
+                                    {{ work_order.assigned_employee }}
+                                {% else %}
+                                    Unassigned
+                                {% endif %}
+
+                            </td>
+
+
+                            <td>
+                                {{ work_order.get_status_display }}
+                            </td>
+
+
+                            <td>
+                                {{ work_order.created_at|date:"d M Y" }}
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        {% else %}
+
+            <p>
+                No recent work orders available.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+</div>
+
+{% endblock %}
