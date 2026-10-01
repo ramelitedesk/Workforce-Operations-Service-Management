@@ -1,429 +1,198 @@
-Workforce Operations & Service Management Platform
+# Workforce Operations & Service Management Platform
+
+A full-stack, enterprise-style workforce and service management platform built with **Django, Django REST Framework, PostgreSQL, Celery, Redis, Docker, and Gunicorn**.
+
+The platform manages the complete operational lifecycle:
+
+**Create → Assign → Schedule → Execute → Track → Verify → Close → Report**
+
+It is designed around real-world business workflows including workforce management, customers, service operations, work orders, scheduling, attendance, leave, inventory, assets, billing, notifications, reporting, and auditability.
+
+---
+
+## 🚀 Key Features
+
+### Workforce Management
+- Employee management
+- Departments and teams
+- Employee skills and certifications
+- Role-based access control
+- Employee eligibility validation
+- Workforce assignment workflows
+
+### Customer & Service Management
+- Customer management
+- Customer contacts and locations
+- Service categories
+- Service catalog
+- Service requirements
+- Contract management
+- SLA management
+
+### Ticket & Work Order Management
+- Ticket lifecycle management
+- Work order creation and tracking
+- Priority and status management
+- Employee assignment
+- Eligibility validation
+- Work order status transitions
+- Operational workflow tracking
+
+### Scheduling & Attendance
+- Employee availability
+- Work scheduling
+- Schedule conflict detection
+- Attendance management
+- Time entries
+- Leave management
+- Leave overlap and validation rules
+
+### Assets & Inventory
+- Asset management
+- Asset categories
+- Asset maintenance
+- Product management
+- Warehouse management
+- Stock management
+- Stock movements
+- Inventory transfers
+- Atomic inventory operations
 
-A Django-based enterprise workforce and field-service management platform designed to manage the complete operational lifecycle:
+### Billing & Payments
+- Invoice management
+- Invoice items
+- Tax and discount calculations
+- Payment tracking
+- Partial payments
+- Payment validation
+- Invoice status updates
+- Expense management
 
-Create → Assign → Schedule → Execute → Track → Verify → Close → Report
+### Notifications & Background Processing
+- Application notifications
+- Read/unread notification management
+- Background task processing
+- Celery workers
+- Celery Beat scheduled tasks
+- Redis message broker
 
-The platform brings workforce management, customers, service operations, work orders, scheduling, attendance, assets, inventory, billing, notifications, reporting, and REST APIs into a single system.
+### Reporting & Dashboard
+- Operational dashboard
+- Workforce statistics
+- Work order monitoring
+- Operational reports
+- Role-based dashboard access
 
-Project Highlights
+### REST API & Security
+- Django REST Framework
+- JWT authentication
+- Access and refresh tokens
+- Role-based API permissions
+- Company-level data isolation
+- Multi-tenant architecture
+- API throttling
+- Authenticated API endpoints
 
-Custom email-based authentication and role-based access
+### Testing
+- Django automated test framework
+- API test suite
+- Authentication tests
+- JWT tests
+- Permission tests
+- Company data isolation tests
+- WorkOrder API tests
 
-Company-aware multi-tenant data isolation
+**20 automated API tests — 20/20 passing**
 
-Workforce, employees, departments, teams, skills, and certifications
+### DevOps & Deployment
+- Dockerized application
+- Docker Compose
+- PostgreSQL container
+- Redis container
+- Celery worker container
+- Celery Beat container
+- Gunicorn application server
+- Environment-based configuration
+- Docker health checks
+- Persistent Docker volumes
 
-Customer, contact, and service-location management
+---
 
-Services, service requirements, contracts, and SLAs
+# 🖥️ Application Screenshots
 
-Ticket and work-order lifecycle management
+## Dashboard
 
-Employee eligibility and assignment engine
+The operational dashboard provides a centralized view of workforce and service-management activities.
 
-Schedule and availability conflict validation
+> Add your dashboard screenshot here.
 
-Attendance, time entries, and leave management
+<img width="1915" height="987" alt="image" src="https://github.com/user-attachments/assets/7257e257-6974-419e-a8ad-c404bbc94381" />
 
-Asset and maintenance tracking
+<img width="1894" height="985" alt="image" src="https://github.com/user-attachments/assets/b00106a3-2c12-44a6-b610-95a57dfb7c4d" />
 
-Inventory, stock movements, and warehouse management
 
-Invoicing, payments, and expenses
+---
 
-In-app notifications
+## Django Admin
 
-Celery + Redis background processing
+The Django Admin interface provides centralized management of application data and business entities.
 
-Operational dashboard and reporting
+> Add your Django Admin screenshot here.
 
-REST API secured with JWT authentication
+<img width="1920" height="1038" alt="image" src="https://github.com/user-attachments/assets/8ca7caad-2459-4ea0-924a-7f0647aa699a" />
 
-API throttling and company/role-based permissions
 
-Automated API/security regression tests
+---
 
-Dockerized PostgreSQL, Redis, Django/Gunicorn, Celery Worker, and Celery Beat
+## REST API & JWT Authentication
 
-Technology Stack
+The platform exposes authenticated REST APIs using Django REST Framework and JWT authentication.
 
-Layer
+> Add your Postman/API screenshot here.
 
-Technology
+<img width="1895" height="992" alt="image" src="https://github.com/user-attachments/assets/ef0f6ec7-bb37-4a70-af5b-a0faa8a02583" />
 
-Backend
 
-Django 6.1
+---
 
-API
+## Dockerized Architecture
 
-Django REST Framework
+The application runs as a multi-container environment using Docker Compose.
 
-Authentication
+Services include:
 
-Django Auth + Simple JWT
+- Django + Gunicorn
+- PostgreSQL
+- Redis
+- Celery Worker
+- Celery Beat
 
-Database
+> Add your Docker Desktop screenshot here.
 
-PostgreSQL 16
+<img width="1891" height="1015" alt="image" src="https://github.com/user-attachments/assets/2870405c-c505-4a05-9b03-7881728a7d39" />
 
-Background Jobs
 
-Celery
+---
 
-Message Broker / Cache
+## Work Order Management
 
-Redis 7
+Work orders form the core operational workflow of the platform, connecting customers, services, employees, schedules, and execution status.
 
-Web Server
+> Add your Work Order screenshot here.
 
-Gunicorn
+<img width="1920" height="3538" alt="image" src="https://github.com/user-attachments/assets/904938ff-393f-4479-ba35-7ed7e03b2395" />
 
-Containers
 
-Docker + Docker Compose
+---
 
-Frontend
+## Automated Tests
 
-Django templates / Bootstrap
+The API test suite verifies authentication, permissions, company-level data isolation, and WorkOrder API behavior.
 
-Testing
-
-Django Test Framework
-
-Version Control
-
-Git + GitHub
-
-Core Modules
-
-Accounts & Organizations
-
-Custom user model with email-based login
-
-Role-based access control
-
-Company/organization management
-
-Workforce
-
-Departments
-
-Employees
-
-Teams
-
-Skills
-
-Certifications
-
-Employee skill/certification records
-
-Customers & Services
-
-Customers
-
-Customer contacts
-
-Service locations
-
-Service categories
-
-Services
-
-Service requirements
-
-Contracts
-
-SLAs
-
-Service Operations
-
-Tickets
-
-Work orders
-
-Assignment engine
-
-Scheduling
-
-Employee availability
-
-Attendance
-
-Time entries
-
-Leave requests
-
-Assets & Inventory
-
-Asset categories
-
-Asset tracking
-
-Maintenance records
-
-Products
-
-Warehouses
-
-Stock
-
-Stock movements
-
-Stock transfers
-
-Billing & Notifications
-
-Invoices
-
-Invoice items
-
-Payments
-
-Expenses
-
-In-app notifications
-
-Notification processing through Celery
-
-Reports & Dashboard
-
-Operational dashboard
-
-Workforce metrics
-
-Ticket and work-order metrics
-
-Attendance metrics
-
-Invoice/revenue metrics
-
-Low-stock monitoring
-
-Operational alerts
-
-Recent activity
-
-REST API
-
-The project includes a JWT-secured REST API with:
-
-Authenticated API access
-
-JWT access/refresh tokens
-
-Company-level data isolation
-
-Role-based permissions
-
-Request throttling
-
-Work-order endpoints and actions
-
-Automated API/security regression tests
-
-Architecture
-
-Client / Browser
-       |
-       v
-Django / Gunicorn
-       |
-       +--------------------+
-       |                    |
-       v                    v
-PostgreSQL              Redis
-       |                    |
-       |              +-----+-----+
-       |              |           |
-       |              v           v
-       |           Celery      Celery Beat
-       |           Worker
-       |
-       v
-Django Applications
-       |
-       +-- Accounts
-       +-- Organizations
-       +-- Workforce
-       +-- Customers
-       +-- Services
-       +-- Contracts
-       +-- Tickets
-       +-- Work Orders
-       +-- Scheduling
-       +-- Attendance
-       +-- Leave
-       +-- Assignment
-       +-- Assets
-       +-- Inventory
-       +-- Billing
-       +-- Notifications
-       +-- Reports
-       +-- API
-
-Business Workflow
-
-Customer / Internal Request
-          ↓
-        Ticket
-          ↓
-      Work Order
-          ↓
- Employee Eligibility
-          ↓
-    Assignment
-          ↓
-      Scheduling
-          ↓
-     Dispatch / Visit
-          ↓
-   Work Execution
-          ↓
- Completion / Verification
-          ↓
-       Billing
-          ↓
-       Reporting
-
-Docker Setup
-
-The project is containerized for a consistent development environment.
-
-Services:
-
-web — Django application served by Gunicorn
-
-db — PostgreSQL
-
-redis — Redis
-
-celery — Celery worker
-
-celery-beat — scheduled Celery tasks
-
-Start the project
-
-Create a local .env file with the required environment variables, then run:
-
-docker compose up -d --build
-
-Apply migrations:
-
-docker compose exec web python manage.py migrate
-
-Collect static files:
-
-docker compose exec web python manage.py collectstatic --noinput
-
-Check container status:
-
-docker compose ps
-
-The Django application is available at:
-
-http://127.0.0.1:8000/
-
-Django Admin:
-
-http://127.0.0.1:8000/admin/
-
-Environment Variables
-
-Sensitive configuration is kept outside source control in .env.
-
-Example structure:
-
-DEBUG=True
-SECRET_KEY=your-secret-key
-DB_NAME=workforce_db
-DB_USER=postgres
-DB_PASSWORD=your-database-password
-DB_HOST=db
-DB_PORT=5432
-CELERY_BROKER_URL=redis://redis:6379/0
-CELERY_RESULT_BACKEND=redis://redis:6379/1
-
-Never commit .env or production secrets to GitHub.
-
-Testing
-
-The API/security test suite currently contains 20 automated tests, covering areas including:
-
-JWT authentication
-
-Invalid authentication
-
-Authenticated user access
-
-Company isolation
-
-Role-based permissions
-
-JWT refresh
-
-Work-order API access/regression
-
-Run the API tests with:
-
-docker compose exec web python manage.py test api
-
-Expected result:
-
+```text
+Found 20 test(s).
+....................
 Ran 20 tests
 OK
 
-Additional project checks:
-
-docker compose exec web python manage.py check
-docker compose exec web python manage.py makemigrations --check --dry-run
-
-Project Status
-
-The current implementation includes the core backend, operational modules, dashboard/reporting, REST API, Celery/Redis automation, Docker environment, and automated API/security tests.
-
-The React frontend is intentionally planned as a future phase rather than part of the current implementation.
-
-Future Enhancements
-
-Potential future phases include:
-
-React frontend
-
-Advanced reporting and analytics
-
-Mobile application
-
-Maps/GPS integration
-
-Push/SMS notification integrations
-
-S3-compatible file storage
-
-Expanded automated test coverage
-
-Production deployment with Nginx and HTTPS
-
-Advanced scheduling and optimization
-
-Security Notes
-
-.env is excluded from version control.
-
-JWT authentication is used for the REST API.
-
-API requests use authentication and throttling.
-
-Company-aware permissions are implemented for API access.
-
-Sensitive configuration is supplied through environment variables.
-
-Author
-
-Ramakrushna
-
-GitHub: https://github.com/ramelitedesk
-
-This project was built as a portfolio-focused enterprise Django application demonstrating backend architecture, business workflows, API development, database design, background processing, Dockerization, and automated testing.
+<img width="1906" height="989" alt="image" src="https://github.com/user-attachments/assets/f7841c28-c829-4eda-8a65-303ad0cbe469" />
